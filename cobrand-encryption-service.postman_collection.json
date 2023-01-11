@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "e152856f-6783-4bb2-a27f-a5b950f600eb",
+		"name": "cobrand-encryption-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Encrypt the XML Content",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<PartnerAccountEnrollmentRequest xmlns=\"http://barclaycardus.com/svc/partnerfeed/schema/v3/partnerAccountEnrollmentRequest\">\r\n    <EventAttributes>\r\n        <EventName>PARTNER_ACCOUNT_ENROLLMENT_EVENT</EventName>\r\n        <EventPlatformType>CONSUMER_CREDIT_CARD</EventPlatformType>\r\n        <EventSequenceID>89996818</EventSequenceID>\r\n        <EventSourceApplication>BCUS</EventSourceApplication>\r\n        <EventRegisteredTime>2023-01-05T17:12:36.446Z</EventRegisteredTime>\r\n    </EventAttributes>\r\n    <AccountData>\r\n        <BarclaysAccountId>2233533158</BarclaysAccountId>\r\n        <AccountOpenDate>2023-01-05Z</AccountOpenDate>\r\n    </AccountData>\r\n    <Application>\r\n        <ApplicationId>58155485</ApplicationId>\r\n        <InBoundChannel>1007</InBoundChannel>\r\n        <OutBoundChanel>1038</OutBoundChanel>\r\n        <CampaignID>3269</CampaignID>\r\n        <CellID>999</CellID>\r\n    </Application>\r\n    <CustomerData>\r\n        <AccountRelationshipActionType>ADD</AccountRelationshipActionType>\r\n        <UserType>primary</UserType>\r\n        <CustomerId>\r\n            <BarclaysCustomerId>5533533158</BarclaysCustomerId>\r\n            <PartnerCustomerId>1101101101</PartnerCustomerId>\r\n        </CustomerId>\r\n        <CustomerName>\r\n            <NamePrefix/>\r\n            <FirstName>Gati</FirstName>\r\n            <MiddleName/>\r\n            <LastName>Anders</LastName>\r\n        </CustomerName>\r\n        <Address>\r\n            <AddressLine1>5 Lakeview Ave.</AddressLine1>\r\n            <AddressLine2/>\r\n            <City>Bronx</City>\r\n            <State>NY</State>\r\n            <ZipCode>10458</ZipCode>\r\n            <Country>USA</Country>\r\n        </Address>\r\n        <CountryOfCitizenship>USA</CountryOfCitizenship>\r\n        <DateOfBirth>1978-05-24</DateOfBirth>\r\n        <EmailAddress>gatikanders1111978@gmail.com</EmailAddress>\r\n        <Phone>\r\n            <HomePhone>7869824583</HomePhone>\r\n            <MobilePhone/>\r\n        </Phone>\r\n    </CustomerData>\r\n    <ProductData>\r\n        <BarclaysProductId>CCMMX37508</BarclaysProductId>\r\n        <PartnerProductId>JB3/MX</PartnerProductId>\r\n    </ProductData>\r\n    <AccountStatusChangeData>\r\n        <AccountCurrentStatusAtBarclays>OPEN</AccountCurrentStatusAtBarclays>\r\n        <AccountPriorStatusAtBarclays>NULL</AccountPriorStatusAtBarclays>\r\n    </AccountStatusChangeData>\r\n    <ChangeIndicator>\r\n        <MessageRefreshIndicator>false</MessageRefreshIndicator>\r\n        <AccountStatusChangeIndicator>true</AccountStatusChangeIndicator>\r\n        <ProductChangeIndicator>true</ProductChangeIndicator>\r\n        <BenefitChangeIndicator>false</BenefitChangeIndicator>\r\n        <AccountRelationshipChangeIndicator>true</AccountRelationshipChangeIndicator>\r\n        <CustomerIdChangeIndicator>false</CustomerIdChangeIndicator>\r\n        <NameChangeIndicator>false</NameChangeIndicator>\r\n        <AddressChangeIndicator>false</AddressChangeIndicator>\r\n        <EmailChangeIndicator>false</EmailChangeIndicator>\r\n        <PhoneChangeIndicator>false</PhoneChangeIndicator>\r\n        <LoyaltyTierChangeIndicator>false</LoyaltyTierChangeIndicator>\r\n        <PartnerDataReconIndicator>false</PartnerDataReconIndicator>\r\n    </ChangeIndicator>\r\n</PartnerAccountEnrollmentRequest>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/barclays/encryption",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"barclays",
+						"encryption"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Decrypt JWT String",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "eyJjdHkiOiJCQVNFNjQiLCJlbmMiOiJBMjU2R0NNIiwidXVpZCI6ImFjMGM0ZThiLTgxZWMtNGJmMC1hMjUyLThiYmI1NjlkNjA0YyIsImFsZyI6IlJTQS1PQUVQLTI1NiIsImtpZCI6Intwcml2YXRlLWtleS1yZWZlcmVuY2Ugb3Iga2V5LWlkIn0.X73QDix5ESFEZJ-HwCTiEumEozZDi9bu68gNoK7SYzG80SbWrPLPdi5RoKZB5pzYJffgmr53b3NfqzBoEoNmVFzJX7lB-LSnNrK73MkOp7_N81VxbhwVCcVoNPcGPGk-uoEUhkmaMstEKjzQlGNgGrWfza1udoiWBeKWxEBwKZAUNA_4msdaqnqJm4qYrUQ6Dbe6RElUhdE4IiTj7mVZtoc0PNE88vOOlKJC4qfPC5HJq-Lkmfsh09ofcfQqt042VpGI2CD9MSQskkA41ZUt9T7dp5yMm64mtuw1KG22koKBGCqSHktuZY_hWwnDuW5Wk2SpOehLEfobO3KZ5Zvd-w.gquW6mkzsl_UpVLo.NIc8N9KfWNLNCVVzn-WidY2s84sQh1aNejGRfH9F_oC657bnz6xPoBirZF3BuAWrQAxc-QacMOY8FhDmgcw7DzkxFfGAAOqvYzLoaF47OLwKf_U9-2iAeP3hg6pCWa7WlRVvNLBvBlSvqIzSmsBGMFnpviGlE13ddv4eehsj_PFGDO-K4w3hizs9kRsd9mBBjAe-3aAK3osu1z3kvd6BkkrgIEfEaOIo5mdUnfWI_5yyw_LGxXz_SSEtpajHB8NAc17rU5hdq4CMbI7wxArWU5n6gLUDJ-cdOv1y70y6mV7xBCljmwJfmc6mEQ3o5t9Z2McU-cyaL9LPMdhV5xqf-rd9TSfekRfed1rU5qCnwS32k90MInfsUBtl4xDdVm4kf193DEwDhPV4JjVky96ttZGMT_E78PGR5HiwiHMZJlGcl73FFunUtrnEwi746qJI2GYhdeV8e7_jPWiHGa2FyqvQgeUCXf80P4FvTSTG4P1BskkMz4ZlC6692UNeFyw-e-GusysxkGYyfPzdEEjGYplqfZ6y6ywa7YhInJxQGD_gba7mccvoTwLv5W6WVWOzpYxj92cQWKzAZXe4r3etgx--ZFSVpML35Xiqw4q5MBfcYB1tXyn7sedHTpMOkh7jcWjmWahwLx2K-da7B2gepWYkIICZyos8uyKJ653DFx3GfgZrXvFDIkTlq7m_jHJYi_bzw2kVkRPWh83kLkD1K8paqLBOqXhT8R_2P3MycOXxRktd3nSBUtx31qyRiFlhW-RSxAQOH897p2U4oRoMoNs6j4TLrGg1l4HtTyT4R14cPttJlgOdkTlGZSDcfBIQL8plx-QfA9WlTKqRYqF-6j5TvtIL3SD1Px18fSqfSwp93FKtjAVkHh6AWe7V6b1PYWAHDO0VC52ntlXNlnI5FUzSX8fC657wjGETW1y2hMFUmP5xqtnZisgZrkYZKgk2YDAg7pHJyUdizAXFcHGD7wdHuKMpSTmoOkY9MG50dqiExqEY3ZC9SdRjyUsJaT8gGEyodp-rcFAgD_UROuO3zv3LEZZ8JmL6RVxgJa3uUpfXtLtJCD2iM1E8HTw7Fb2kaRVdV6m8ABDkG31Xf-5f04sUwwnClBF1Vk6xbHBMlfa-fOCt2crGrgN70QBeHpu52ci9y-wpOEaGf0sZ0hgT7FMFEBpranQMKx69tFFY31a5Bi9thgGsacIV5TuNrilgKPaulTEv767fdtbTBkuEtenJ5Yu8YAua1I9rKKzO0P1j7v-Wc70JSMDAULKf1bJr9VRTCwLOePOJyjhYoCy8Q6A8ikbdiH4-ljcphjrXj95ceg-1yFnzjcYF8Z4gYMl_m7IkyYFadxMQw4KXCpb9j3ubEvTgs-qWEuwlNHrIo4th_aAPGzPmCzLsoIfCEo8aUiwq538VNDBLauGK22ITDujEpm8-3HjbW0j6OtY2X7LhRwEbhCid5eSvIXvcTTYudbND0aWwc6E0qa5y4dXDzYoPWnaVXqvQFHjTnbBiUlJ1wd6TPcXTujMvzqQZMhH6lktVnkGf_C0O7Ya5jPBTBpSegABQ2mzqOABJC3tJJ33UPf07ixKm6hBSwdWS5cG2P9PXh6L5Ov-UHfp0GlydHxeUk5EYoZyd6PDU5VqA61AjSh_zOERklSF6vnI5IGacQQ8NacaCDomEGaLNJDyl0Xq8QgmJEeZZFcAj08akFvGeaaI53YZ1T0QQ0fP8JcKiOCzUMtRCojhX5JLzyL0IVS-p8LfUo3vHND_G3aboEFaShSTVZMrYgncGr2IcaJcXo3ILznHi8j3XFsDersAZFZmEra8a4zVAPnNs_zfNYTugFU1oK5bNWC-McLX3_6YwXkHf4gP-4rUl9gXUoZ1Iwx2cHy2gWNtPPh0NYx1YU7z5Nuzh0dq8Zi5rPYdA3Acnu9P7YlpMAAbbNUC7R7febMW_sdpeKlMuw00a5GruI9ic1QJw3jrJ8s3tW1rX-TfFqU0-mBpsJM0CogK-lceuFC86PnEeIltD93erTOAIARc6C9bJv-K9B8a0z22KiKDnwhYd4_VnZs-s832xGxM_7VwEnBBIgK0D9scpTznufONqgNBFxPgKrbmST0ObOIrlmk_Nk0ygyzv0y3mhanGL1GKZjB031LwPhCwVpsm5zpOOwyzbPDIALD3rHBfuhQYiNs0EIiUsfGNbgyayu1QZHT48Y884AU_l0ogLpVQEgtj5rAbJTHf-qMOk1-Y3KbNT_SkXjAt0EPpDXli7ZewnXVHZbXTQsjS2JwBY37Y8H4GX7Gbb7xQClZHt4dbGaFLv3mU8VN39EYzSuxQUd5SepnGZm34PSs4AUNO251nNNP-DVQh49OqQbTQwAr5REKFVQ5Ujd77MEE1gOh0UgB1IYB1lb-xDWwlElXZ0ec8ak2N1n2Jdnn9xlnzcXkutX3IHxDbahExHMXBGCTBYRCRzRQSnUg1lGMu_9k_IAsLsMETLBJTqj60GhT6-YXk0D81FArItdd7q18uMASC2m1KAfK6hPNoqgyxjFXZKAbhDQm10tHApSIDh7F1m7re7mUVHDE0d8p3TMMt5BZEz4iR4HtG2reJ1vNCALj5wbvJKaTzZAhuMaWLdCU69XHhh8wGJMoz_jelJtw7gBPA_1EdRZ0V7O4HusHjNKENXAZ-h10KUd6hS_9fpgosK4jdC26vY5ew_Zh2Me68GJEys9TEmzSXpZlrMDdRAd0dZQ1PiyhDyrVXKnbJ0yQT5h3EFfUfvfYdRom6EYvlnchAGPK4GR7_Zs30_VZj9oNoFANgXsDYiFE_Mb4C2rlCc_2j37GsiOJ9zHFnko5E9aQfc01QGQPlOnMEvrx2CIbFHPcaaZaWaNw2xXCzzWAY7mfXMAuV6VYhe7qZp33QTPFJDd32c_-xAvAFOcQQb6IWJIBRu1ii9UBZ6Dyk1UpAJ6KD_2zts24pKSFRSKrpohkPzCzFbbQKw6C-HkBky4-CLbj70Zv5WZJCwWyqNYSQKSIK9W7ojEprMCduzVzCOM9Y_i6ZbSeH2MSuAaQYfGAMeIVkSGIPVQogcGfwjV4EV01fQDI_E4HY6Ija1jedIDrS03Qj6vWehlCIGZEwCDshmcHCTgi_hSNOTZDsvRBGPwP4va249arVVWDBvsaiYKjqKWyVOfnpo7BvBTNffybKyaEAXhaxmysCGPQHU9gK2BM8zypriMZRx0llJSL8b04OhP1KCmIsC7u5jFdO2cEAGjwxk_JXcQSba9KQS50DtnorvJKslvBAkx2rIonAxNHEb9WgErLKqCUwxoZLmMhdNr_HoWJ9TAT0DYXYs1f3fcmnSq4xTtr3C_v7XxF0mV7oOyzy4Hzkr_NCjA5rDT9Y4QY__pElZDabETHB1nt6bPXU6QTMxXTtUmZ7hAy7dhkTt-OgwTFaL40YN85lVa4zD4Kl1haifQ2Ys5LDSyP5qGZKEsbwCLXlIcJSfw4HcSvH8E8BFhnbFR0qJSptBV7ADxAqBtyJD5AU8cOlo0D58LYz3iSB8tR1K0dCbD1ExCvAzOxzDhJyiuZosuzziGuwkpZ77-ku6sEGcKvomb3pNMyZiGhM07P8N88a8O5pKWVNIFa_bKhNco8VtodBHF6BDB3H3yq1qT64-LFp5s8lB9bKvGKFRUXhaL03EtLbOE6LSghZo8fhHPxtsUkqBoie7AC9HA5tahSvWFXcNQCQZkMv8o2bMz-ghAJQ8PcB8gP1bK-QB8yhSdgDyb6o78rbmeF26QVboZT46Lsd2LG4oFn8VVWAFpxzcdqhwAC8ggGXbzGKVDcACM1O-8ho-8POh-lrBQgpdcoVtlFf-WF-McWYWLp5qOSsJ-2Xplwan18wSlCO9hRIpZzKyz725t5UayIBryRjNihHAopwAnJxECx3lEdjhw2mhK6WuBRILkpIJRDkxZs-58C-Nt4IoDrDO0Uo8HRlQTAG_bXlTPoaaPj_2sVeRAls-h96zeyl14ipDn31PN6mAbyRaoY2TMYzlf50QxV50Y2uj_1nRc68gNC1Pk0h_1q0b4spsgoTJezJGBOqzxHK4JTnq3Exi0wvMqRpDMSka5j8TpkVWQiNJbPs4f2Uxk7dRpINAsmFe3qh75vdVeijApwQWYK4HO5tDtZaJrodXmP7x9AonW6NPspY9hfeRsmoWf8gC7eCVDEsMJZR_foSU7iVCvn6B4sxLN42_45W_qj3UOna2GWF_GoTi5WrnoCScqnZ_HEZUgd_R18WK9hlZnis9f4FkdCp1fbhHaPjU1iMv_HXB-6m7U2fyoKafk9SNTFWAJ3V9rs4b-R1-ueQtGVXRLYDGiAV02I-1mg0V_8C4HWLcoxJKlJFwehx1Npi9-tCrq_BKUWgbLFBeTEfEoKBC5bDw66uoujBJbH6WUy6H6wXfnIf9CrJVz_iWnQBNH4sSmTT11gz2xTcKU9OEhcK6j14avvWuczZmD_0ND4DAcqZ4jqRSuAe-swIwEmm70af3cjUX17MRnhLKLkRLHDeMxUd6lTuobFbPpcm4G5U57xDdmG0BQ2CCzEhAukUmsMB64QtfLBJOQCgCu6zLqNQxT30uB_nX12j4L_8SVnnLOhDW32SLUsHjMFMPBBO0IfXkpV4SgDB3vwfDI-UQgAYILacwOfLz0QxLx53_8A.f_gV8TcFfUNKEkfAJpaJpw",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/barclays/decryption",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"barclays",
+						"decryption"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
